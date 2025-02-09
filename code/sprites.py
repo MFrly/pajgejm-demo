@@ -1,8 +1,14 @@
-from settings import *
+from settings import * 
 
-class ColilisionSprite(pygame.sprite.Sprite):
-    def __init__(self, pos, size, groups):
+class Sprite(pygame.sprite.Sprite):
+    def __init__(self, pos, surf, groups):
         super().__init__(groups)
-        self.image = pygame.Surface(size)
-        self.image.fill('red')
-        self.rect = self.image.get_rect(center = pos)
+        self.image = surf
+        self.rect = self.image.get_rect(topleft = pos)
+        self.ground = True
+
+class CollisionSprite(pygame.sprite.Sprite):
+    def __init__(self, pos, surf, groups):
+        super().__init__(groups)
+        self.image = surf
+        self.rect = self.image.get_rect(topleft = pos)
